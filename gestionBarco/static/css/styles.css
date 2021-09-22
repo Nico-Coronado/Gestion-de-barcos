@@ -1,0 +1,33 @@
+.jumbotron h1{
+    color: #f74646;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    width: 50%;
+}
+
+.titulo{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Centrar div */
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.box{
+    width: 650px;
+    background-color: white;
+    box-shadow: 22px 22px 22px 22px grey ;
+    padding: 35px;
+    margin: auto;
+    border-radius: 8px;
+    
+}

@@ -1,0 +1,25 @@
+{% extends 'layouts/layout_crud.html' %}{% load static %}
+{% block title %}{{object}} - ServiciosSOS{% endblock title %}
+{% block content %}
+<div class="center">
+    <div class="box">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2>Actualizando a {{object}} </h2>
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{form.errors}}
+                </div>
+            {% endif %}
+            {% for field in form %}
+                <label>{{field.label}}</label>
+                {{field}}
+            {% endfor %}
+            <div style="padding: 5px;"></div>
+            <input type="submit" value="Actualizar" class="btn btn-primary">
+            <a href="{% url 'gestion-tripulante' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    

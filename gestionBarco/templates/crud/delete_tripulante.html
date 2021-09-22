@@ -1,0 +1,15 @@
+{% extends 'layouts/layout_crud.html' %}{% load static %}
+{% block title %}{{object}} - ServiciosSOS{% endblock title %}
+{% block content %}
+<div class="center">
+    <div class="box">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2>Seguro de eliminar a {{object}} </h2>
+            <input type="submit" value="Borrar" class="btn btn-danger">
+            <a href="{% url 'gestion-tripulante' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+    

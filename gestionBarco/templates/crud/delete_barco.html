@@ -1,0 +1,17 @@
+{% extends 'layouts/layout_crud.html' %}{% load static %}
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+<div class="center">
+    <div class="box">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2>Seguro de eliminar el barco <strong>{{object}}</strong> </h2>
+            <p>Todos los tripulantes de este barco seran borrados</p>
+            <input type="submit" value="Borrar" class="btn btn-danger">
+            <a href="{% url 'gestion-barco' %}" class="btn btn-secondary">Cancelar</a>
+        </form>        
+    </div>
+</div>
+
+{% endblock content %}

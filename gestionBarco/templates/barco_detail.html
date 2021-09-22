@@ -1,0 +1,74 @@
+{% extends 'layouts/layout.html' %} {% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+<h1 class="titulo">barco {{barco}}</h1>
+<div class="row">
+    <div class="col-lg-6">
+        <h2 class="titulo">Grupo 1</h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for a in lista1 %}
+              <tr>
+                <td>{{a.nombre}}</td>
+                <td>{{a.cargo}}</td>
+                <td>
+                  <a href="{% url 'update-tripulante' a.id %}" class="btn btn-warning">Act.</a>
+                  <a href="{% url 'delete-tripulante' a.id %}" class="btn btn-danger">Elim.</a>
+                </td>
+              </tr>
+            {% empty %}
+            <h2 style="font-weight: bold; color: red;">No existen tripulantes en el grupo 1</h2>
+            {% endfor %}
+            </tbody>
+          </table>
+          <h2 class="titulo">Grupo 2</h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for a in lista2 %}
+              <tr>
+                <td>{{a.nombre}}</td>
+                <td>{{a.cargo}}</td>                
+                <td>
+                  <a href="{% url 'update-tripulante' a.id %}" class="btn btn-warning">Act.</a>
+                  <a href="{% url 'delete-tripulante' a.id %}" class="btn btn-danger">Elim.</a>
+                </td>
+              </tr>
+            {% empty %}
+            <h2 style="font-weight: bold; color: red;">No existen tripulantes en el grupo 2</h2>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="col-lg-6">
+        <h2 class="titulo">Crear Tripulante</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <label >{{field.label}}</label>
+                {{field}}
+            {% endfor %}
+            <div style="padding: 5px;"></div>
+            <input type="submit" class="btn btn-primary" value="Crear tripulante">
+        </form>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+            {{form.errors}}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

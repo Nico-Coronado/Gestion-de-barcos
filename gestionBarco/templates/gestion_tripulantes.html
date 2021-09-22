@@ -1,0 +1,61 @@
+{% extends 'layouts/layout.html' %} {% load static %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-6">
+        <h2 class="titulo">Lista de tripulantes</h2>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th>Grupo</th>
+                <th>barco</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for a in lista %}
+              <tr>
+                <td>{{a.nombre}}</td>
+                <td>{{a.cargo}}</td>
+                <td>{{a.grupo}}</td>
+                <td>{{a.barco}}</td>
+                
+                <td>
+                  <a href="#" class="btn btn-warning">Act.</a>
+                  <a href="{% url 'delete-tripulante' a.id %}" class="btn btn-danger">Elim.</a>
+                </td>
+              </tr>
+            {% empty %}
+            <h2>No existen tripulantes</h2>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <div class="col-lg-6">
+        <h2 class="titulo">Crear Tripulante</h2>
+        {% if barco %}
+        <form action="" method="POST">
+          {% csrf_token %}
+          {% for field in form %}
+              <label >{{field.label}}</label>
+              {{field}}
+          {% endfor %}
+          <div style="padding: 5px;"></div>
+          <input type="submit" class="btn btn-primary" value="Crear tripulante">
+      </form>
+      {% if form.errors %}
+          <div class="alert alert-danger">
+          {{form.errors}}
+          </div>
+      {% endif %}
+        {% else %}
+        <div class="alert alert-danger" style="padding: 50px;">
+          <h2 style="font-weight: bold; text-align: center;">No se pueden crear tripulantes sin barcos</h2>
+        </div>
+        
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
